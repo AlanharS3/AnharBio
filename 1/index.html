@@ -71,11 +71,11 @@
                 </div>
             </div> -->
 
-            <!-- <div class="mb-5">
+            <div class="mb-5">
               <label for="nama" class="form-label">Nama</label>
-              <input type="email" class="form-control" id="nama">
+              <input type="text" class="form-control" id="nama">
               <div id="my-nama"></div>
-            </div> -->
+            </div>
 
             <div class="mb-5">
               <label for="email" class="form-label">Email </label>
@@ -108,29 +108,29 @@
   <script>
 
       //--nama Regex-->
-      // const namaRegex = document.getElementById('nama')
-      // const myNama = document.getElementById('my-nama')
-      // const checkNama = (value) => {
-      //     const regex = ""
-      //     const isNama = regex.test(value)
-      //     if (isNama){
-      //         return true
-      //     } else {
-      //         return false
-      //     }
-      // }
-      // namaRegex.addEventListener('keyup', (e) => {
-      //     const value = e.target.value
-      //     const isNama = checkNama(value)
-      //     if(value) {
-      //         if (isNama) {
-      //             myNama.innerHTML = "berhasil"
-      //         } else {
-      //             myNama.innerHTML = " "
-      //         }
-      //     }
-      // }
-      // );
+      const namaRegex = document.getElementById('nama')
+      const myNama = document.getElementById('my-nama')
+      const checkNama = (value) => {
+          const regex = /^[a-zA-Z ]{2,30}$/
+          const isNama = regex.test(value)
+          if (isNama){
+              return true
+          } else {
+              return false
+          }
+      }
+      namaRegex.addEventListener('keyup', (e) => {
+          const value = e.target.value
+          const isNama = checkNama(value)
+          if(value) {
+              if (isNama) {
+                  myNama.innerHTML = "berhasil"
+              } else {
+                  myNama.innerHTML = "Tidak mengandung Angka"
+              }
+          }
+      }
+      );
 
       //--Email Regex-->
       const emailRegex = document.getElementById('email')
