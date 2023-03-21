@@ -71,11 +71,17 @@
                 </div>
             </div> -->
 
-            <div class="mb-5">
+            <div class="mb-5 mt-5">
               <label for="nama" class="form-label">Nama</label>
               <input type="text" class="form-control" id="nama">
               <div id="my-nama"></div>
             </div>
+
+            <div class="mb-5">
+                <label for="nim" class="form-label">Nim</label>
+                <input type="text" class="form-control" id="nim">
+                <div id="my-nim"></div>
+              </div>
 
             <div class="mb-5">
               <label for="email" class="form-label">Email </label>
@@ -128,6 +134,34 @@
               } else {
                   myNama.innerHTML = "Tidak mengandung Angka"
               }
+          }
+      }
+      );
+
+      //--Nim Regex-->
+      const nimRegex = document.getElementById('nim')
+      const myNim = document.getElementById('my-nim')
+      const checkNim = (value) => {
+          const regex = /^[0/-9]{9}$/
+          const isNim = regex.test(value)
+          if (isNim){
+              return true
+          } else {
+              return false
+          }
+      }
+      nimRegex.addEventListener('keyup', (e) => {
+          const value = e.target.value
+          const isNim = checkNim(value)
+          if(value.length <= 9) {
+              if (isNim) {
+                  myNim.innerHTML = "berhasil"
+              } else {
+                  myNim.innerHTML = "9 digit, Tidak mengandung Huruf"
+              }
+          }
+          else {
+              myNim.innerHTML = "Melebihi"
           }
       }
       );
