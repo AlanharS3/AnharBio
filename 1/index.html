@@ -61,7 +61,7 @@
 
         <Form>
 
-            <div class="mb-5">
+            <!-- <div class="mb-5">
                 <label for="passowrd" class="form-label">Password</label>
                 <input type="text" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" />
                 <div id="invalid-passowrd" style="display:none;color:rgb(255, 255, 255)">
@@ -69,13 +69,33 @@
                     Mengandung huruf kapital dan
                     angka
                 </div>
-            </div>
+            </div> -->
 
+            <!-- <div class="mb-5">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="email" class="form-control" id="nama">
+              <div id="my-nama"></div>
+            </div> -->
+
+            <div class="mb-5">
+              <label for="email" class="form-label">Email </label>
+              <input type="text" class="form-control" id="email">
+              <div id="my-email"></div>
+            </div>
+          
             <div class="mb-5">
                 <label for="phone-regex" class="form-label">Nomor HP</label>
                 <input type="text" class="form-control" id="phone-regex">
                 <div id="my-phone"></div>
             </div>
+
+            <div class="mb-5">
+              <label for="pass" class="form-label">Password </label>
+              <input type="text" class="form-control" id="pass">
+              <div id="my-pass"></div>
+          </div>
+            
+            
 
         </Form>
 
@@ -87,45 +107,122 @@
   <!--Regular Expression-->
   <script>
 
-    //--Phone Regex-->
-    const phoneRegex = document.getElementById('phone-regex')
-    const myPhone = document.getElementById('my-phone')
-    const checkPhoneNumber = (value) => {
-        const regex = /^0[0-9]{9,11}$/
-        const isPhoneNumber = regex.test(value)
-        if (isPhoneNumber){
-            return true
-        } else {
-            return false
-        }
-    }
-    phoneRegex.addEventListener('keyup', (e) => {
+      //--nama Regex-->
+      // const namaRegex = document.getElementById('nama')
+      // const myNama = document.getElementById('my-nama')
+      // const checkNama = (value) => {
+      //     const regex = ""
+      //     const isNama = regex.test(value)
+      //     if (isNama){
+      //         return true
+      //     } else {
+      //         return false
+      //     }
+      // }
+      // namaRegex.addEventListener('keyup', (e) => {
+      //     const value = e.target.value
+      //     const isNama = checkNama(value)
+      //     if(value) {
+      //         if (isNama) {
+      //             myNama.innerHTML = "berhasil"
+      //         } else {
+      //             myNama.innerHTML = " "
+      //         }
+      //     }
+      // }
+      // );
+
+      //--Email Regex-->
+      const emailRegex = document.getElementById('email')
+      const myEmail = document.getElementById('my-email')
+      const checkEmail = (value) => {
+          const regex = /^\w+([\.-]?\w+)@\w+([-]?\w+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/
+          const isEmail = regex.test(value)
+          if (isEmail){
+              return true
+          } else {
+              return false
+          }
+      }
+      emailRegex.addEventListener('keyup', (e) => {
+          const value = e.target.value
+          const isEmail = checkEmail(value)
+          if(value) {
+              if (isEmail) {
+                  myEmail.innerHTML = "berhasil"
+              } else {
+                  myEmail.innerHTML = "format 'yourname@example.com' "
+              }
+          }
+      }
+      );
+
+      //--Phone Regex-->
+      const phoneRegex = document.getElementById('phone-regex')
+      const myPhone = document.getElementById('my-phone')
+      const checkPhoneNumber = (value) => {
+          const regex = /^0[0-9]{9,11}$/
+          const isPhoneNumber = regex.test(value)
+          if (isPhoneNumber){
+              return true
+          } else {
+              return false
+          }
+      }
+      phoneRegex.addEventListener('keyup', (e) => {
+          const value = e.target.value
+          const isPhoneNumber = checkPhoneNumber(value)
+          if(value.length <= 13) {
+              if (isPhoneNumber) {
+                  myPhone.innerHTML = "berhasil"
+              } else {
+                  myPhone.innerHTML = "Diawali angka 0, 9-13 digit"
+              }
+          } else {
+              myPhone.innerHTML = "melebihi"
+          }
+      }
+      );
+
+
+     //--Pass Regex-->
+      const passRegex = document.getElementById('pass')
+      const myPass = document.getElementById('my-pass')
+      const checkPass = (value) => {
+          const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/
+          const isPass = regex.test(value)
+          if (isPass){
+              return true
+          } else {
+              return false
+          }
+      }
+    passRegex.addEventListener('keyup', (e) => {
         const value = e.target.value
-        const isPhoneNumber = checkPhoneNumber(value)
-        if(value.length <= 12) {
-            if (isPhoneNumber) {
-                myPhone.innerHTML = "berhasil"
+        const isPass = checkPass(value)
+        if(value) {
+            if (isPass) {
+                myPass.innerHTML = "berhasil"
             } else {
-                myPhone.innerHTML = "gagal"
+                myPass.innerHTML = "minimal 10 kareter,Mengandung huruf kapital dan angka"
             }
-        } else {
-            myPhone.innerHTML = "melebihi"
         }
     }
     );
 
-    //Password Regex
-    const passwordField = document.querySelector("[name=password]");
 
-    passwordField.addEventListener("keyup", (event) => {
-        if(!passwordField.validity.valid){
-            console.error("passowrd invalid");
-            document.getElementById("invalid-passowrd").style.display = "block";
-        } else {
-            console.info("passowrd valid");
-            document.getElementById("invalid-passowrd").style.display = "none";
-        }
-    });
+    //Password Regex
+    // const passwordField = document.querySelector("[name=password]");
+
+    // passwordField.addEventListener("keyup", (event) => {
+    //     if(!passwordField.validity.valid){
+    //         console.error("passowrd invalid");
+    //         document.getElementById("invalid-passowrd").style.display = "block";
+    //     } else {
+    //         console.info("passowrd valid");
+    //         document.getElementById("invalid-passowrd").style.display = "none";
+    //     }
+    // });
 
 
 
